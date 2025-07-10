@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Shopping Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-robot"></i> AI Shopping Assistant</h1>
+                <p>Your intelligent shopping companion for the best deals and recommendations</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Chat Interface -->
+            <div class="chat-container">
+                <div class="chat-header">
+                    <h2><i class="fas fa-comments"></i> Chat with Your Shopping Assistant</h2>
+                    <div class="chat-status">
+                        <span class="status-indicator online"></span>
+                        <span>Assistant Online</span>
+                    </div>
+                </div>
+
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message assistant-message">
+                        <div class="message-avatar">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="message-content">
+                            <p>Hello! I'm your AI shopping assistant. I can help you find products, discover amazing discounts, get personalized recommendations, and manage your orders. What can I help you with today?</p>
+                            <div class="message-suggestions">
+                                <button class="suggestion-btn" onclick="sendSuggestion('Show me discounts')">
+                                    <i class="fas fa-percent"></i> Show me discounts
+                                </button>
+                                <button class="suggestion-btn" onclick="sendSuggestion('Recommend products for me')">
+                                    <i class="fas fa-star"></i> Recommend products
+                                </button>
+                                <button class="suggestion-btn" onclick="sendSuggestion('Find electronics under $500')">
+                                    <i class="fas fa-search"></i> Find electronics
+                                </button>
+                                <button class="suggestion-btn" onclick="sendSuggestion('Check my orders')">
+                                    <i class="fas fa-box"></i> Check orders
+                                </button>
+                            </div>
+                        </div>
+                        <div class="message-time">Just now</div>
+                    </div>
+                </div>
+
+                <div class="chat-input-container">
+                    <div class="chat-input-wrapper">
+                        <input type="text" id="messageInput" placeholder="Ask me about products, discounts, orders..." class="chat-input">
+                        <button onclick="sendMessage()" class="send-button" id="sendButton">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <div class="typing-indicator" id="typingIndicator" style="display: none;">
+                        <span>Assistant is typing</span>
+                        <div class="typing-dots">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <!-- Quick Actions -->
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-bolt"></i> Quick Actions</h3>
+                    <div class="quick-actions">
+                        <button class="action-btn" onclick="sendSuggestion('What discounts are available?')">
+                            <i class="fas fa-tags"></i>
+                            <span>Current Discounts</span>
+                        </button>
+                        <button class="action-btn" onclick="sendSuggestion('Show me Black Friday deals')">
+                            <i class="fas fa-fire"></i>
+                            <span>Hot Deals</span>
+                        </button>
+                        <button class="action-btn" onclick="sendSuggestion('Track my order')">
+                            <i class="fas fa-shipping-fast"></i>
+                            <span>Track Order</span>
+                        </button>
+                        <button class="action-btn" onclick="sendSuggestion('Recommend a laptop')">
+                            <i class="fas fa-laptop"></i>
+                            <span>Product Help</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Categories -->
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-th-large"></i> Popular Categories</h3>
+                    <div class="categories">
+                        <button class="category-btn" onclick="sendSuggestion('Show me electronics')">
+                            <i class="fas fa-tv"></i> Electronics
+                        </button>
+                        <button class="category-btn" onclick="sendSuggestion('Find clothing deals')">
+                            <i class="fas fa-tshirt"></i> Clothing
+                        </button>
+                        <button class="category-btn" onclick="sendSuggestion('Show me shoes')">
+                            <i class="fas fa-shoe-prints"></i> Shoes
+                        </button>
+                        <button class="category-btn" onclick="sendSuggestion('Home and kitchen products')">
+                            <i class="fas fa-home"></i> Home & Kitchen
+                        </button>
+                        <button class="category-btn" onclick="sendSuggestion('Sports and outdoors')">
+                            <i class="fas fa-running"></i> Sports
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-history"></i> Recent Activity</h3>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <i class="fas fa-search"></i>
+                            <span>Searched for laptops</span>
+                        </div>
+                        <div class="activity-item">
+                            <i class="fas fa-percent"></i>
+                            <span>Checked electronics discounts</span>
+                        </div>
+                        <div class="activity-item">
+                            <i class="fas fa-star"></i>
+                            <span>Got product recommendations</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </main>
+
+        <!-- Features Section -->
+        <section class="features">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>AI-Powered Recommendations</h3>
+                    <p>Get personalized product suggestions based on your preferences and shopping history</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-percent"></i>
+                    <h3>Smart Discount Finder</h3>
+                    <p>Automatically discover the best deals and coupons for your favorite products</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-comments"></i>
+                    <h3>Natural Language Chat</h3>
+                    <p>Ask questions in plain English and get instant, helpful responses</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-box"></i>
+                    <h3>Order Management</h3>
+                    <p>Track orders, manage returns, and get updates on your purchases</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Scripts -->
+    <script src="chat.js"></script>
+</body>
+</html> 
